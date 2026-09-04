@@ -1,4 +1,4 @@
-<div class="relative z-10 w-full px-3 py-4 pb-8 flex flex-col items-center">
+<div class="relative z-10 w-full px-3 py-4 pb-2 flex flex-col items-center">
     
     <!-- CLEAN BOTANICAL HEADER SVG -->
     <div class="w-full flex justify-center mb-1">

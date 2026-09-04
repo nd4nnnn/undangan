@@ -1,4 +1,4 @@
-<div class="relative z-10 w-full px-4 py-6 text-center flex flex-col items-center justify-center min-h-[70vh]">
+<div class="relative z-10 w-full px-4 py-4 text-center flex flex-col items-center justify-center">
     
     <!-- CARD UTAMA: BENTUK KUBAH / KAPSUL -->
     <div class="stationery-card relative w-full max-w-sm p-6 pt-8 pb-8 rounded-t-[90px] rounded-b-3xl gold-border-inner shadow-sm flex flex-col items-center">

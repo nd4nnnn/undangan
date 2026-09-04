@@ -1,4 +1,4 @@
-<div class="relative z-10 w-full px-3 py-4 pb-8 text-center flex flex-col items-center">
+<div class="relative z-10 w-full px-3 py-4 pb-2 text-center flex flex-col items-center">
     
     <!-- BOTANICAL HEADER SVG -->
     <div class="w-full flex justify-center mb-1">
@@ -56,18 +56,6 @@
 
     </div>
 
-    <!-- MODAL POP-UP FOTO -->
-    <div id="imageModal" class="fixed inset-0 bg-black/85 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-md" onclick="closeModal()">
-        <div class="relative max-w-md w-full flex flex-col items-center" onclick="event.stopPropagation()">
-            <button onclick="closeModal()" class="self-end mb-2 w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 text-white text-xl flex items-center justify-center backdrop-blur-sm transition cursor-pointer">
-                &times;
-            </button>
-            <div class="p-1.5 bg-white rounded-2xl shadow-2xl border border-gold/40 w-full">
-                <img id="modalImg" src="" class="w-full max-h-[72vh] object-contain rounded-xl">
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <!-- Script Modal Foto -->
@@ -78,6 +66,7 @@
         if (img && modal) {
             img.src = imageSrc;
             modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
             const box = modal.querySelector('.relative');
             if (box) {
                 box.classList.remove('modal-content-animate');
@@ -91,6 +80,7 @@
         const modal = document.getElementById('imageModal');
         if (modal) {
             modal.classList.add('hidden');
+            document.body.style.overflow = '';
         }
     }
 </script>

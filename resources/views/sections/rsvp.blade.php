@@ -1,4 +1,4 @@
-<div class="relative z-10 w-full px-3 py-4 text-center flex flex-col items-center justify-center min-h-[70vh] gap-4">
+<div class="relative z-10 w-full px-3 py-4 text-center flex flex-col items-center justify-center gap-4">
     
     <!-- CARD 1: HEADER & COUNTDOWN -->
     <div class="stationery-card relative w-full max-w-sm p-5 pt-6 rounded-[28px] gold-border-inner shadow-sm flex flex-col items-center">
@@ -38,9 +38,15 @@
     <!-- CARD 2: ACTION & RSVP CALL-TO-ACTION -->
     <div class="stationery-card relative w-full max-w-sm p-5 rounded-2xl gold-border-inner shadow-sm flex flex-col items-center">
 
-        <p class="text-xs sm:text-sm text-stone-700 mb-4 leading-relaxed font-serif-luxury italic text-base">
+        <p class="text-xs sm:text-sm text-stone-700 mb-1 leading-relaxed font-serif-luxury italic text-base">
             Kirim ucapan untuk mempelai<br>dan konfirmasi kehadiran
         </p>
+
+        <!-- Social Proof Pill -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream-warm border border-gold/30 text-stone-600 text-[10.5px] font-sans my-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span><strong id="badgePreviewCount" class="text-maroon">{{ count($ucapans ?? []) }}</strong> Ucapan & Doa Masuk</span>
+        </div>
 
         <button 
             type="button" 
@@ -50,93 +56,11 @@
             <svg class="w-3.5 h-3.5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
             </svg>
-            <span>Kirim Ucapan RSVP</span>
+            <span>Kirim Ucapan & RSVP</span>
         </button>
 
     </div>
 
-</div>
-
-<!-- MODAL POP-UP RSVP FORM -->
-<div id="rsvpModal" class="fixed inset-0 bg-black/70 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-md transition-all duration-300" onclick="closeRsvpModal()">
-    <div class="relative w-full max-w-md bg-white border border-gold/40 rounded-3xl shadow-2xl p-6 text-left max-h-[85vh] overflow-y-auto" onclick="event.stopPropagation()">
-        
-        <!-- Tombol Close (X) -->
-        <button type="button" onclick="closeRsvpModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-500 hover:text-maroon text-lg font-bold flex items-center justify-center cursor-pointer transition">
-            &times;
-        </button>
-
-        <h2 class="text-xl font-bold text-center text-maroon font-cinzel-heading mb-1 tracking-wider">RSVP</h2>
-        <div class="w-10 h-[1px] bg-gold/50 mx-auto mb-4"></div>
-
-        <!-- Alert Notifikasi -->
-        <div id="rsvpAlert" class="hidden mb-3 p-2.5 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs rounded-xl font-semibold text-center shadow-xs">
-            Ucapan berhasil dikirim!
-        </div>
-
-        <!-- Form Input Ucapan -->
-        <form id="rsvpFormSubmit" onsubmit="sendRsvpAjax(event)" class="space-y-3">
-            @csrf
-            <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1 font-sans">Nama</label>
-                <input 
-                    type="text" 
-                    id="inputNama"
-                    name="nama" 
-                    value="{{ $namaTamu !== 'Tamu Undangan' ? $namaTamu : '' }}" 
-                    required 
-                    placeholder="Nama" 
-                    class="w-full px-3 py-2 text-xs sm:text-sm bg-stone-50/70 border border-stone-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-maroon focus:bg-white transition font-sans"
-                >
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1 font-sans">Kehadiran</label>
-                <select id="inputKehadiran" name="kehadiran" required class="w-full px-3 py-2 text-xs sm:text-sm bg-stone-50/70 border border-stone-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-maroon focus:bg-white transition font-sans">
-                    <option value="" disabled selected>Pilih Kehadiran</option>
-                    <option value="Hadir">Hadir</option>
-                    <option value="Tidak Hadir">Tidak Hadir</option>
-                </select>
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1 font-sans">Komentar atau Ucapan</label>
-                <textarea id="inputUcapan" name="ucapan" rows="3" required placeholder="Tuliskan pesan atau ucapan selamat..." class="w-full px-3 py-2 text-xs sm:text-sm bg-stone-50/70 border border-stone-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-maroon focus:bg-white transition font-sans"></textarea>
-            </div>
-
-            <button type="submit" id="btnSubmitRsvp" class="w-full bg-gradient-to-r from-maroon via-maroon-light to-maroon text-white font-semibold py-2.5 rounded-full shadow-xs hover:brightness-110 active:scale-95 transition text-xs uppercase tracking-wider font-sans cursor-pointer border border-gold/30">
-                Kirim Ucapan
-            </button>
-        </form>
-
-        <hr class="my-4 border-stone-200">
-
-        <!-- List Ucapan dari Database -->
-        <div id="listUcapanBox" class="space-y-2.5 max-h-48 overflow-y-auto pr-1 no-scrollbar">
-           @forelse($ucapans ?? [] as $item)
-                <div class="p-3 bg-stone-50/80 border border-stone-200/80 rounded-xl shadow-xs">
-                    <div class="flex items-center gap-2 mb-1">
-                        <div class="w-6 h-6 rounded-full bg-maroon text-white text-[10px] font-bold flex items-center justify-center uppercase shadow-xs">
-                            {{ substr($item->nama, 0, 2) }}
-                        </div>
-                        <span class="font-bold text-xs text-stone-800 font-sans">{{ $item->nama }}</span>
-                        
-                        <!-- BADGE WARNA DINAMIS -->
-                        <span class="text-[9px] px-2 py-0.5 rounded-full font-semibold {{ $item->kehadiran === 'Hadir' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800' }}">
-                            {{ $item->kehadiran }}
-                        </span>
-                    </div>
-                    <p class="text-xs text-stone-700 pl-8 mb-0.5 leading-relaxed font-sans">{{ $item->ucapan }}</p>
-                    <span class="text-[9px] text-stone-400 pl-8 block font-sans">
-                        {{ $item->created_at->format('d F Y \a\t H.i') }}
-                    </span>
-                </div>
-            @empty
-                <p id="emptyUcapanText" class="text-center text-xs text-stone-500 py-2 font-sans">Belum ada ucapan.</p>
-            @endforelse
-        </div>
-
-    </div>
 </div>
 
 <script>
@@ -166,12 +90,59 @@
         }, 1000);
     });
 
+    // Pilihan Kehadiran (Pill Switcher)
+    function selectKehadiran(status) {
+        const input = document.getElementById('inputKehadiran');
+        if (input) input.value = status;
+
+        const btnHadir = document.getElementById('btnOptHadir');
+        const btnTidak = document.getElementById('btnOptTidak');
+
+        if (!btnHadir || !btnTidak) return;
+
+        if (status === 'Hadir') {
+            btnHadir.className = "flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border-2 border-maroon bg-maroon/5 text-maroon font-bold text-xs shadow-xs transition cursor-pointer";
+            btnTidak.className = "flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-stone-200 bg-white text-stone-500 font-medium text-xs shadow-2xs transition cursor-pointer hover:border-stone-300";
+        } else {
+            btnTidak.className = "flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border-2 border-rose-500 bg-rose-50/50 text-rose-700 font-bold text-xs shadow-xs transition cursor-pointer";
+            btnHadir.className = "flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-stone-200 bg-white text-stone-500 font-medium text-xs shadow-2xs transition cursor-pointer hover:border-stone-300";
+        }
+    }
+
+    // Tab Switcher antara Form dan List Ucapan
+    function switchRsvpTab(tab) {
+        const tabForm = document.getElementById('rsvpTabForm');
+        const tabList = document.getElementById('rsvpTabList');
+        const btnTabForm = document.getElementById('btnTabForm');
+        const btnTabList = document.getElementById('btnTabList');
+
+        if (!tabForm || !tabList || !btnTabForm || !btnTabList) return;
+
+        if (tab === 'form') {
+            tabForm.classList.remove('hidden');
+            tabList.classList.add('hidden');
+            btnTabForm.className = "flex-1 py-2 rounded-lg text-xs font-bold transition bg-maroon text-white shadow-xs flex items-center justify-center gap-1.5 cursor-pointer";
+            btnTabList.className = "flex-1 py-2 rounded-lg text-xs font-semibold transition text-stone-600 hover:text-maroon flex items-center justify-center gap-1.5 cursor-pointer";
+        } else {
+            tabForm.classList.add('hidden');
+            tabList.classList.remove('hidden');
+            btnTabList.className = "flex-1 py-2 rounded-lg text-xs font-bold transition bg-maroon text-white shadow-xs flex items-center justify-center gap-1.5 cursor-pointer";
+            btnTabForm.className = "flex-1 py-2 rounded-lg text-xs font-semibold transition text-stone-600 hover:text-maroon flex items-center justify-center gap-1.5 cursor-pointer";
+        }
+    }
+
     function sendRsvpAjax(e) {
         e.preventDefault();
 
         const btn = document.getElementById('btnSubmitRsvp');
         btn.disabled = true;
-        btn.innerText = 'Mengirim...';
+        btn.innerHTML = `
+            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>Mengirim...</span>
+        `;
 
         const form = document.getElementById('rsvpFormSubmit');
         const formData = new FormData(form);
@@ -185,12 +156,17 @@
         })
         .then(response => {
             btn.disabled = false;
-            btn.innerText = 'Kirim Ucapan';
+            btn.innerHTML = `
+                <svg class="w-4 h-4 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+                <span>Kirim Ucapan</span>
+            `;
 
             const alertBox = document.getElementById('rsvpAlert');
             if (alertBox) {
                 alertBox.classList.remove('hidden');
-                setTimeout(() => alertBox.classList.add('hidden'), 3000);
+                setTimeout(() => alertBox.classList.add('hidden'), 3500);
             }
 
             const nama = document.getElementById('inputNama').value;
@@ -200,33 +176,60 @@
             const emptyText = document.getElementById('emptyUcapanText');
             if (emptyText) emptyText.remove();
 
-            const badgeColorClass = kehadiran === 'Hadir' 
-                ? 'bg-emerald-100 text-emerald-800' 
-                : 'bg-rose-100 text-rose-800';
+            const isHadir = kehadiran === 'Hadir';
+            const badgeClass = isHadir 
+                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' 
+                : 'bg-rose-50 text-rose-700 border border-rose-200';
+            const dotClass = isHadir ? 'bg-emerald-500' : 'bg-rose-400';
 
             const listContainer = document.getElementById('listUcapanBox');
             const newCard = `
-                <div class="p-3 bg-stone-50/80 border border-stone-200/80 rounded-xl shadow-xs">
-                    <div class="flex items-center gap-2 mb-1">
-                        <div class="w-6 h-6 rounded-full bg-maroon text-white text-[10px] font-bold flex items-center justify-center uppercase shadow-xs">
-                            ${nama.substring(0, 2)}
+                <div class="p-3 bg-white border border-gold/30 rounded-2xl shadow-2xs transition animate-fade-up">
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-cream-warm border border-gold/40 text-maroon text-[11px] font-bold flex items-center justify-center uppercase font-serif-luxury shadow-2xs">
+                                ${nama.substring(0, 2).toUpperCase()}
+                            </div>
+                            <span class="font-bold text-xs text-stone-800 font-sans tracking-wide">${nama}</span>
                         </div>
-                        <span class="font-bold text-xs text-stone-800 font-sans">${nama}</span>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full font-semibold ${badgeColorClass}">
-                            ${kehadiran}
+                        <span class="text-[9.5px] px-2 py-0.5 rounded-full font-medium font-sans flex items-center gap-1 ${badgeClass}">
+                            <span class="w-1.5 h-1.5 rounded-full ${dotClass}"></span>
+                            <span>${kehadiran}</span>
                         </span>
                     </div>
-                    <p class="text-xs text-stone-700 pl-8 mb-0.5 leading-relaxed font-sans">${ucapan}</p>
-                    <span class="text-[9px] text-stone-400 pl-8 block font-sans">Baru saja</span>
+                    <p class="text-xs text-stone-600 pl-9 mb-1 leading-relaxed font-sans">${ucapan}</p>
+                    <span class="text-[9px] text-stone-400 pl-9 block font-sans">Baru saja</span>
                 </div>
             `;
 
-            listContainer.insertAdjacentHTML('afterbegin', newCard);
+            if (listContainer) {
+                listContainer.insertAdjacentHTML('afterbegin', newCard);
+            }
+
+            // Update Counters
+            const badgePreview = document.getElementById('badgePreviewCount');
+            const countBadge = document.getElementById('countUcapanBadge');
+            if (countBadge) {
+                const current = parseInt(countBadge.innerText) || 0;
+                countBadge.innerText = current + 1;
+                if (badgePreview) badgePreview.innerText = current + 1;
+            }
+
             document.getElementById('inputUcapan').value = '';
+
+            // Otomatis pindah ke tab doa setelah 1.2 detik
+            setTimeout(() => {
+                switchRsvpTab('list');
+            }, 1200);
         })
         .catch(err => {
             btn.disabled = false;
-            btn.innerText = 'Kirim Ucapan';
+            btn.innerHTML = `
+                <svg class="w-4 h-4 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+                <span>Kirim Ucapan</span>
+            `;
             alert('Gagal mengirim ucapan, silakan coba lagi.');
         });
     }
@@ -235,6 +238,8 @@
         const modal = document.getElementById('rsvpModal');
         if (modal) {
             modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            switchRsvpTab('form');
             const card = modal.querySelector('.relative');
             if (card) {
                 card.classList.remove('modal-content-animate');
@@ -246,6 +251,9 @@
 
     function closeRsvpModal() {
         const modal = document.getElementById('rsvpModal');
-        if (modal) modal.classList.add('hidden');
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
     }
 </script>

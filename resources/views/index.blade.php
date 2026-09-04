@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- LAYER 1: COVER DEPAN (OPENING CURTAIN / ENVELOPE) -->
-    <div id="coverWrapper" class="fixed inset-0 z-[100] max-w-md mx-auto bg-gradient-to-b from-[#FAF7F2] via-[#F5ECE0] to-[#EFE4D4] flex flex-col items-center justify-center text-center p-5 transition-all duration-700 ease-in-out shadow-2xl">
+    <div id="coverWrapper" class="fixed inset-0 z-[100] max-w-md mx-auto bg-gradient-to-b from-[#FAF7F2] via-[#F5ECE0] to-[#EFE4D4] flex flex-col items-center justify-center text-center p-4 transition-all duration-700 ease-in-out shadow-2xl overflow-y-auto no-scrollbar">
         <div class="absolute inset-0 bg-[radial-gradient(#C5A059_0.75px,transparent_0.75px)] [background-size:20px_20px] opacity-25 pointer-events-none"></div>
         @include('sections.opening')
     </div>
@@ -11,31 +11,31 @@
     <!-- LAYER 2: ISI UNDANGAN UTAMA -->
     <div id="mainContent" class="hidden w-full flex-1 flex flex-col">
         
-        <section id="mempelai" class="page-section min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
+        <section id="mempelai" class="page-section w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @include('sections.mempelai')
         </section>
 
-        <section id="akad" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
+        <section id="akad" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @include('sections.akad-resepsi')
         </section>
 
-        <section id="love-story" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
+        <section id="love-story" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @include('sections.love-story')
         </section>
 
-        <section id="gallery" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
+        <section id="gallery" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @includeIf('sections.gallery')
         </section>
 
-        <section id="rsvp" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
+        <section id="rsvp" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @includeIf('sections.rsvp')
         </section>
 
-        <section id="gift" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
+        <section id="gift" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @includeIf('sections.gift')
         </section>
 
-        <section id="quotes" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
+        <section id="quotes" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @include('sections.quotes')
         </section>
 
@@ -50,17 +50,35 @@
     const diskRotate = document.getElementById('diskRotate');
     let isPlaying = false;
 
+    // Set initial paused state
+    if (diskRotate) diskRotate.style.animationPlayState = 'paused';
+
+    function updateMusicUI(playing) {
+        isPlaying = playing;
+        if (diskRotate) {
+            diskRotate.style.animationPlayState = playing ? 'running' : 'paused';
+            diskRotate.style.opacity = playing ? '1' : '0.55';
+        }
+    }
+
     function toggleMusic() {
         if (!audio) return;
         if (isPlaying) {
             audio.pause();
-            if (diskRotate) diskRotate.style.animationPlayState = 'paused';
+            updateMusicUI(false);
         } else {
             audio.play().then(() => {
-                if (diskRotate) diskRotate.style.animationPlayState = 'running';
-            }).catch(e => console.log('Audio error:', e));
+                updateMusicUI(true);
+            }).catch(e => {
+                console.log('Audio error:', e);
+                updateMusicUI(false);
+            });
         }
-        isPlaying = !isPlaying;
+    }
+
+    if (audio) {
+        audio.addEventListener('play', () => updateMusicUI(true));
+        audio.addEventListener('pause', () => updateMusicUI(false));
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -71,8 +89,13 @@
         const mainContent = document.getElementById('mainContent');
         const btnOpen = document.getElementById('btnOpenInvitation');
 
+        if (coverWrapper && coverWrapper.style.display !== 'none') {
+            document.body.style.overflow = 'hidden';
+        }
+
         if (btnOpen) {
             btnOpen.addEventListener('click', function() {
+                document.body.style.overflow = '';
                 coverWrapper.style.transition = 'opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
                 coverWrapper.style.opacity = '0';
                 coverWrapper.style.transform = 'translateY(-100%) scale(0.96)';
@@ -101,12 +124,10 @@
 
                 if (audio) {
                     audio.play().then(() => {
-                        isPlaying = true;
-                        if (diskRotate) diskRotate.style.animationPlayState = 'running';
+                        updateMusicUI(true);
                     }).catch(e => {
                         console.log('Audio autoplay prevented:', e);
-                        isPlaying = false;
-                        if (diskRotate) diskRotate.style.animationPlayState = 'paused';
+                        updateMusicUI(false);
                     });
                 }
 

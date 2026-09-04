@@ -1,4 +1,4 @@
-<section id="opening" class="relative w-full h-[calc(100vh-40px)] flex flex-col items-center justify-center text-center px-4 overflow-hidden select-none">
+<div id="opening" class="relative w-full my-auto flex flex-col items-center justify-center text-center px-2 select-none">
 
     <!-- STATIONERY CARD WITH BALANCED MARGINS & CRISP GOLD HAIRLINE -->
     <div class="stationery-card relative z-10 my-auto flex flex-col items-center w-full max-w-sm p-6 pt-9 pb-8 rounded-[36px] gold-border-inner shadow-[0_15px_35px_rgba(122,32,33,0.12)]">
@@ -66,5 +66,4 @@
         </div>
 
     </div>
-
-</section>
+</div>
