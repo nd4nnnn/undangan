@@ -1,51 +1,70 @@
-<div class="relative z-10 w-full px-4 py-10 pb-24 text-center">
+<div class="relative z-10 w-full px-3 py-4 pb-8 text-center flex flex-col items-center">
     
-    <!-- Header Galeri & Ornaments -->
-    <div class="w-full flex justify-center mb-4">
-        <img src="/images/ornament-top.png" alt="ornament" class="w-3/4 opacity-80" onerror="this.style.display='none'">
+    <!-- BOTANICAL HEADER SVG -->
+    <div class="w-full flex justify-center mb-1">
+        <img src="/images/botanical-header.svg" alt="Botanical Ornament" class="w-44 h-auto opacity-70">
     </div>
-    <h2 class="text-3xl font-bold text-maroon mb-8 font-serif tracking-wide">Galeri Foto Mempelai</h2>
+    
+    <h2 class="text-2xl sm:text-3xl font-bold text-maroon mb-5 font-serif-luxury tracking-wide">
+        Galeri Foto Mempelai
+    </h2>
 
-    <!-- Grid Foto Aesthetic (Masonic Layout) -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-md mx-auto">
+    <!-- GRID FOTO AESTHETIC WITH CLEAN MATTE BORDERS -->
+    <div class="grid grid-cols-2 gap-2.5 w-full max-w-sm mx-auto">
         
         <!-- Foto 1 (Baris 1 - Kiri) -->
-        <div class="overflow-hidden rounded-lg shadow-md bg-white p-1 border border-amber-900/10 cursor-pointer group" onclick="openModal('/images/gallery-1.jpg')">
-            <img src="/images/gallery-1.jpg" alt="Gallery 1" class="w-full h-48 object-cover rounded group-hover:scale-105 transition duration-300">
+        <div class="overflow-hidden rounded-2xl shadow-sm bg-white p-1 border border-gold/30 cursor-pointer group" onclick="openModal('/images/gallery-1.jpg')">
+            <div class="overflow-hidden rounded-xl">
+                <img src="/images/gallery-1.jpg" alt="Gallery 1" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300">
+            </div>
         </div>
 
         <!-- Foto 2 (Baris 1 - Kanan) -->
-        <div class="overflow-hidden rounded-lg shadow-md bg-white p-1 border border-amber-900/10 cursor-pointer group" onclick="openModal('/images/gallery-2.jpg')">
-            <img src="/images/gallery-2.jpg" alt="Gallery 2" class="w-full h-48 object-cover rounded group-hover:scale-105 transition duration-300">
+        <div class="overflow-hidden rounded-2xl shadow-sm bg-white p-1 border border-gold/30 cursor-pointer group" onclick="openModal('/images/gallery-2.jpg')">
+            <div class="overflow-hidden rounded-xl">
+                <img src="/images/gallery-2.jpg" alt="Gallery 2" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300">
+            </div>
         </div>
 
         <!-- Foto 3 (Baris 2 - Full Wide / Highlight) -->
-        <div class="col-span-2 overflow-hidden rounded-lg shadow-md bg-white p-1 border border-amber-900/10 cursor-pointer group" onclick="openModal('/images/gallery-3.jpg')">
-            <img src="/images/gallery-3.jpg" alt="Gallery 3" class="w-full h-56 object-cover rounded group-hover:scale-105 transition duration-300">
+        <div class="col-span-2 overflow-hidden rounded-2xl shadow-sm bg-white p-1 border border-gold/30 cursor-pointer group" onclick="openModal('/images/gallery-3.jpg')">
+            <div class="overflow-hidden rounded-xl">
+                <img src="/images/gallery-3.jpg" alt="Gallery 3" class="w-full h-52 object-cover group-hover:scale-105 transition duration-300">
+            </div>
         </div>
 
         <!-- Foto 4 (Baris 3 - Kiri) -->
-        <div class="overflow-hidden rounded-lg shadow-md bg-white p-1 border border-amber-900/10 cursor-pointer group" onclick="openModal('/images/gallery-4.jpg')">
-            <img src="/images/gallery-4.jpg" alt="Gallery 4" class="w-full h-40 object-cover rounded group-hover:scale-105 transition duration-300">
+        <div class="overflow-hidden rounded-2xl shadow-sm bg-white p-1 border border-gold/30 cursor-pointer group" onclick="openModal('/images/gallery-4.jpg')">
+            <div class="overflow-hidden rounded-xl">
+                <img src="/images/gallery-4.jpg" alt="Gallery 4" class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+            </div>
         </div>
 
         <!-- Foto 5 (Baris 3 - Kanan) -->
-        <div class="overflow-hidden rounded-lg shadow-md bg-white p-1 border border-amber-900/10 cursor-pointer group" onclick="openModal('/images/gallery-5.jpg')">
-            <img src="/images/gallery-5.jpg" alt="Gallery 5" class="w-full h-40 object-cover rounded group-hover:scale-105 transition duration-300">
+        <div class="overflow-hidden rounded-2xl shadow-sm bg-white p-1 border border-gold/30 cursor-pointer group" onclick="openModal('/images/gallery-5.jpg')">
+            <div class="overflow-hidden rounded-xl">
+                <img src="/images/gallery-5.jpg" alt="Gallery 5" class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+            </div>
         </div>
 
-        <!-- Foto 6 (Baris 4 - Full Wide / Highlight Monochrome) -->
-        <div class="col-span-2 overflow-hidden rounded-lg shadow-md bg-white p-1 border border-amber-900/10 cursor-pointer group" onclick="openModal('/images/gallery-6.jpg')">
-            <img src="/images/gallery-6.jpg" alt="Gallery 6" class="w-full h-60 object-cover rounded group-hover:scale-105 transition duration-300">
+        <!-- Foto 6 (Baris 4 - Full Wide / Highlight) -->
+        <div class="col-span-2 overflow-hidden rounded-2xl shadow-sm bg-white p-1 border border-gold/30 cursor-pointer group" onclick="openModal('/images/gallery-6.jpg')">
+            <div class="overflow-hidden rounded-xl">
+                <img src="/images/gallery-6.jpg" alt="Gallery 6" class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
+            </div>
         </div>
 
     </div>
 
-    <!-- Modal Pop-up Foto Pas Diklik -->
-    <div id="imageModal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeModal()">
-        <div class="relative max-w-lg w-full">
-            <button class="absolute -top-10 right-0 text-white text-3xl font-bold">&times;</button>
-            <img id="modalImg" src="" class="w-full h-auto rounded-lg shadow-2xl border-2 border-white/20">
+    <!-- MODAL POP-UP FOTO -->
+    <div id="imageModal" class="fixed inset-0 bg-black/85 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-md" onclick="closeModal()">
+        <div class="relative max-w-md w-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="self-end mb-2 w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 text-white text-xl flex items-center justify-center backdrop-blur-sm transition cursor-pointer">
+                &times;
+            </button>
+            <div class="p-1.5 bg-white rounded-2xl shadow-2xl border border-gold/40 w-full">
+                <img id="modalImg" src="" class="w-full max-h-[72vh] object-contain rounded-xl">
+            </div>
         </div>
     </div>
 
@@ -54,11 +73,24 @@
 <!-- Script Modal Foto -->
 <script>
     function openModal(imageSrc) {
-        document.getElementById('modalImg').src = imageSrc;
-        document.getElementById('imageModal').classList.remove('hidden');
+        const modal = document.getElementById('imageModal');
+        const img = document.getElementById('modalImg');
+        if (img && modal) {
+            img.src = imageSrc;
+            modal.classList.remove('hidden');
+            const box = modal.querySelector('.relative');
+            if (box) {
+                box.classList.remove('modal-content-animate');
+                void box.offsetWidth;
+                box.classList.add('modal-content-animate');
+            }
+        }
     }
 
     function closeModal() {
-        document.getElementById('imageModal').classList.add('hidden');
+        const modal = document.getElementById('imageModal');
+        if (modal) {
+            modal.classList.add('hidden');
+        }
     }
 </script>

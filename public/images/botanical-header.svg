@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60" fill="none">
+  <!-- Symmetric Luxury Wedding Botanical Header Divider -->
+  <!-- Center Star/Diamond Motif -->
+  <polygon points="200,24 203,30 200,36 197,30" fill="#C5A059"/>
+  <circle cx="200" cy="30" r="1.2" fill="#FAF7F2"/>
+  
+  <!-- Left Side Branches & Leaves -->
+  <path d="M190 30 C 160 30, 130 24, 70 30" stroke="#C5A059" stroke-width="1" stroke-linecap="round"/>
+  <path d="M70 30 L 20 30" stroke="#C5A059" stroke-width="0.75" stroke-dasharray="2 3" stroke-linecap="round"/>
+  <circle cx="15" cy="30" r="2" fill="#C5A059"/>
+  
+  <!-- Left Leaves (Sage & Gold) -->
+  <path d="M175 28 C 170 20, 160 20, 162 27 C 168 28, 172 28, 175 28 Z" fill="#657766" opacity="0.7"/>
+  <path d="M155 31 C 150 38, 140 37, 143 31 C 149 31, 153 31, 155 31 Z" fill="#C5A059" opacity="0.6"/>
+  <path d="M135 27 C 130 18, 120 19, 122 26 C 128 27, 132 27, 135 27 Z" fill="#657766" opacity="0.7"/>
+  <path d="M115 31 C 110 39, 100 38, 103 31 C 109 31, 113 31, 115 31 Z" fill="#C5A059" opacity="0.6"/>
+  <path d="M95 28 C 90 22, 82 23, 84 28 C 89 28, 93 28, 95 28 Z" fill="#657766" opacity="0.6"/>
+
+  <!-- Right Side Branches & Leaves -->
+  <path d="M210 30 C 240 30, 270 24, 330 30" stroke="#C5A059" stroke-width="1" stroke-linecap="round"/>
+  <path d="M330 30 L 380 30" stroke="#C5A059" stroke-width="0.75" stroke-dasharray="2 3" stroke-linecap="round"/>
+  <circle cx="385" cy="30" r="2" fill="#C5A059"/>
+
+  <!-- Right Leaves (Sage & Gold) -->
+  <path d="M225 28 C 230 20, 240 20, 238 27 C 232 28, 228 28, 225 28 Z" fill="#657766" opacity="0.7"/>
+  <path d="M245 31 C 250 38, 260 37, 257 31 C 251 31, 247 31, 245 31 Z" fill="#C5A059" opacity="0.6"/>
+  <path d="M265 27 C 270 18, 280 19, 278 26 C 272 27, 268 27, 265 27 Z" fill="#657766" opacity="0.7"/>
+  <path d="M285 31 C 290 39, 300 38, 297 31 C 291 31, 287 31, 285 31 Z" fill="#C5A059" opacity="0.6"/>
+  <path d="M305 28 C 310 22, 318 23, 316 28 C 311 28, 307 28, 305 28 Z" fill="#657766" opacity="0.6"/>
+</svg>

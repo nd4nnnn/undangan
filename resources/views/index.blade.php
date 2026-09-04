@@ -2,39 +2,40 @@
 
 @section('content')
 
-    <!-- LAYER 1: COVER DEPAN -->
-    <div id="coverWrapper" class="fixed inset-0 z-[100] max-w-md mx-auto bg-[url('/images/bg-castle.jpg')] bg-cover bg-center flex flex-col items-center justify-center text-center p-6 transition-all duration-700">
+    <!-- LAYER 1: COVER DEPAN (OPENING CURTAIN / ENVELOPE) -->
+    <div id="coverWrapper" class="fixed inset-0 z-[100] max-w-md mx-auto bg-gradient-to-b from-[#FAF7F2] via-[#F5ECE0] to-[#EFE4D4] flex flex-col items-center justify-center text-center p-5 transition-all duration-700 ease-in-out shadow-2xl">
+        <div class="absolute inset-0 bg-[radial-gradient(#C5A059_0.75px,transparent_0.75px)] [background-size:20px_20px] opacity-25 pointer-events-none"></div>
         @include('sections.opening')
     </div>
 
     <!-- LAYER 2: ISI UNDANGAN UTAMA -->
-    <div id="mainContent" class="hidden">
+    <div id="mainContent" class="hidden w-full flex-1 flex flex-col">
         
-        <section id="mempelai" class="page-section min-h-screen flex flex-col items-center justify-center p-6 bg-white/40 backdrop-blur-sm animate-[fadeIn_0.5s_ease-in-out]">
+        <section id="mempelai" class="page-section min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
             @include('sections.mempelai')
         </section>
 
-        <section id="akad" class="page-section hidden min-h-screen flex flex-col items-center p-6 animate-[fadeIn_0.5s_ease-in-out]">
+        <section id="akad" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
             @include('sections.akad-resepsi')
         </section>
 
-        <section id="love-story" class="page-section hidden min-h-screen flex flex-col items-center p-6 animate-[fadeIn_0.5s_ease-in-out]">
+        <section id="love-story" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
             @include('sections.love-story')
         </section>
 
-        <section id="gallery" class="page-section hidden min-h-screen flex flex-col items-center p-6 bg-white/40 backdrop-blur-sm animate-[fadeIn_0.5s_ease-in-out]">
+        <section id="gallery" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
             @includeIf('sections.gallery')
         </section>
 
-        <section id="rsvp" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-6 text-center animate-[fadeIn_0.5s_ease-in-out]">
+        <section id="rsvp" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
             @includeIf('sections.rsvp')
         </section>
 
-        <section id="gift" class="page-section hidden min-h-screen flex flex-col items-center p-6 bg-white/40 backdrop-blur-sm animate-[fadeIn_0.5s_ease-in-out]">
+        <section id="gift" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
             @includeIf('sections.gift')
         </section>
 
-        <section id="quotes" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-6 text-center animate-[fadeIn_0.5s_ease-in-out]">
+        <section id="quotes" class="page-section hidden min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 pb-28 sm:pb-32 transition-all duration-300">
             @include('sections.quotes')
         </section>
 
@@ -46,19 +47,18 @@
 <script>
     const audio = document.getElementById('weddingMusic');
     const musicBtn = document.getElementById('musicBtn');
-    const iconPlay = document.getElementById('iconPlay');
-    const iconPause = document.getElementById('iconPause');
+    const diskRotate = document.getElementById('diskRotate');
     let isPlaying = false;
 
     function toggleMusic() {
+        if (!audio) return;
         if (isPlaying) {
             audio.pause();
-            iconPlay.classList.remove('hidden');
-            iconPause.classList.add('hidden');
+            if (diskRotate) diskRotate.style.animationPlayState = 'paused';
         } else {
-            audio.play();
-            iconPlay.classList.add('hidden');
-            iconPause.classList.remove('hidden');
+            audio.play().then(() => {
+                if (diskRotate) diskRotate.style.animationPlayState = 'running';
+            }).catch(e => console.log('Audio error:', e));
         }
         isPlaying = !isPlaying;
     }
@@ -73,18 +73,42 @@
 
         if (btnOpen) {
             btnOpen.addEventListener('click', function() {
-                coverWrapper.classList.add('-translate-y-full', 'opacity-0');
+                coverWrapper.style.transition = 'opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+                coverWrapper.style.opacity = '0';
+                coverWrapper.style.transform = 'translateY(-100%) scale(0.96)';
+                coverWrapper.style.pointerEvents = 'none';
+
                 setTimeout(() => {
-                    coverWrapper.classList.add('hidden');
+                    coverWrapper.style.display = 'none';
                 }, 700);
 
-                if (mainContent) mainContent.classList.remove('hidden');
-                if (mainNav) mainNav.classList.remove('hidden');
-                if (musicBtn) musicBtn.classList.remove('hidden');
+                if (mainContent) {
+                    mainContent.classList.remove('hidden');
+                    const firstSec = document.getElementById('mempelai');
+                    if (firstSec) {
+                        void firstSec.offsetWidth;
+                        firstSec.classList.add('section-animate');
+                    }
+                }
+                if (mainNav) {
+                    mainNav.classList.remove('hidden');
+                    mainNav.classList.add('nav-animate');
+                }
+                if (musicBtn) {
+                    musicBtn.classList.remove('hidden');
+                    musicBtn.style.animation = 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                }
 
-                audio.play().then(() => {
-                    isPlaying = true;
-                }).catch(e => console.log(e));
+                if (audio) {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                        if (diskRotate) diskRotate.style.animationPlayState = 'running';
+                    }).catch(e => {
+                        console.log('Audio autoplay prevented:', e);
+                        isPlaying = false;
+                        if (diskRotate) diskRotate.style.animationPlayState = 'paused';
+                    });
+                }
 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -95,15 +119,29 @@
                 e.preventDefault(); 
                 const targetId = this.getAttribute('data-target');
 
-                sections.forEach(sec => sec.classList.add('hidden'));
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                sections.forEach(sec => {
+                    sec.classList.add('hidden');
+                    sec.classList.remove('section-animate');
+                });
 
                 const targetSection = document.getElementById(targetId);
-                if (targetSection) targetSection.classList.remove('hidden');
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                    void targetSection.offsetWidth;
+                    targetSection.classList.add('section-animate');
+                }
 
-                this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
+
+        const firstNav = document.querySelector('.nav-link[data-target="mempelai"]');
+        if (firstNav) {
+            firstNav.classList.add('active');
+        }
     });
 </script>
 @endpush

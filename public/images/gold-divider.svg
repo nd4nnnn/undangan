@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 24" fill="none">
+  <!-- Minimalist Gold Wedding Flourish Divider -->
+  <line x1="10" y1="12" x2="90" y2="12" stroke="#C5A059" stroke-width="0.75" stroke-linecap="round"/>
+  <circle cx="95" cy="12" r="1.5" fill="#C5A059"/>
+  <circle cx="105" cy="12" r="2" fill="#C5A059"/>
+  <polygon points="120,6 124,12 120,18 116,12" fill="#C5A059"/>
+  <circle cx="135" cy="12" r="2" fill="#C5A059"/>
+  <circle cx="145" cy="12" r="1.5" fill="#C5A059"/>
+  <line x1="150" y1="12" x2="230" y2="12" stroke="#C5A059" stroke-width="0.75" stroke-linecap="round"/>
+</svg>

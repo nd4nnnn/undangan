@@ -1,26 +1,70 @@
-<section id="opening" class="relative w-full h-[calc(100vh-65px)] flex flex-col items-center justify-center text-center px-6 overflow-hidden select-none">
+<section id="opening" class="relative w-full h-[calc(100vh-40px)] flex flex-col items-center justify-center text-center px-4 overflow-hidden select-none">
 
-    <!-- CARD BENTUK ORGANIK / CURVED TOP -->
-    <div class="relative z-10 my-auto animate-fade-in flex flex-col items-center w-full max-w-sm p-8 pt-12 rounded-[50px_10px_50px_10px] bg-white/75 backdrop-blur-md border border-white/80 shadow-2xl">
+    <!-- STATIONERY CARD WITH BALANCED MARGINS & CRISP GOLD HAIRLINE -->
+    <div class="stationery-card relative z-10 my-auto flex flex-col items-center w-full max-w-sm p-6 pt-9 pb-8 rounded-[36px] gold-border-inner shadow-[0_15px_35px_rgba(122,32,33,0.12)]">
         
-        <!-- INNER BORDER SILHOUETTE -->
-        <div class="absolute inset-3 rounded-[42px_6px_42px_6px] border border-slate-blue/20 pointer-events-none"></div>
-
-        <p class="text-xs tracking-widest text-slate-blue font-medium uppercase relative z-10">Sabtu<br>10 Oktober 2026</p>
+        <!-- DATE TOP HEADER -->
+        <div class="relative z-10 mb-2 fade-in-up delay-100">
+            <span class="inline-block text-[11px] sm:text-xs tracking-[0.25em] text-maroon font-semibold uppercase border-b border-gold/40 pb-1">
+                Sabtu<br>10 Oktober 2026
+            </span>
+        </div>
         
-        <h1 class="text-5xl font-bold text-slate-blue my-4 font-serif-custom tracking-wider relative z-10">HP</h1>
-        <h2 class="text-4xl text-slate-blue font-script mb-1 relative z-10">Herni & Panji</h2>
-        <p class="text-[10px] tracking-[0.25em] text-slate-blue mb-6 font-semibold relative z-10">SAVE THE DATE</p>
-        
-        <!-- CARD TAMU DENGEN BENTUK SELARAS -->
-        <div class="w-full bg-white/60 backdrop-blur-sm border border-slate-blue/10 rounded-[20px_6px_20px_6px] p-4 mb-6 shadow-sm relative z-10">
-            <p class="text-xs text-gray-500">Kepada Yth;<br>Bapak/Ibu/Saudara/i</p>
-            <p class="text-lg font-bold text-slate-blue-dark mt-1">{{ $namaTamu ?? 'Tamu Undangan' }}</p>
+        <!-- CRISP VECTOR BOTANICAL WREATH MONOGRAM CREST -->
+        <div class="relative z-10 my-3 flex items-center justify-center fade-in-up delay-200">
+            <div class="relative w-24 h-24 flex items-center justify-center animate-float">
+                <!-- SVG Wreath (Pure Vector, No White Box Artifacts) -->
+                <img 
+                    src="/images/botanical-wreath.svg" 
+                    alt="Floral Crest" 
+                    class="absolute inset-0 w-full h-full object-contain"
+                >
+                <!-- Monogram Text -->
+                <h1 class="relative z-10 text-2xl sm:text-3xl font-bold text-maroon font-cinzel-heading tracking-widest pl-1">
+                    HP
+                </h1>
+            </div>
         </div>
 
-        <button id="btnOpenInvitation" class="w-full bg-maroon text-white py-3.5 rounded-full shadow-lg hover:bg-red-900 transition font-semibold text-sm cursor-pointer hover:scale-105 active:scale-95 duration-200 tracking-wide relative z-10">
-            Open Invitation
-        </button>
+        <!-- COUPLE NAME -->
+        <div class="relative z-10 mb-1 fade-in-up delay-300">
+            <h2 class="text-4xl sm:text-5xl text-maroon font-script-wedding tracking-wide leading-tight">
+                Herni & Panji
+            </h2>
+        </div>
+
+        <!-- SAVE THE DATE -->
+        <div class="relative z-10 mb-6 flex items-center justify-center gap-2 fade-in-up delay-400">
+            <span class="w-6 h-[1px] bg-gold/50"></span>
+            <p class="text-[10px] tracking-[0.3em] text-gold-dark font-bold uppercase font-sans">
+                SAVE THE DATE
+            </p>
+            <span class="w-6 h-[1px] bg-gold/50"></span>
+        </div>
+        
+        <!-- GUEST CARD -->
+        <div class="w-full bg-cream-warm/80 border border-gold/30 rounded-2xl p-4 mb-6 shadow-sm relative z-10 text-center fade-in-up delay-500">
+            <p class="text-xs text-stone-600 leading-relaxed font-sans">
+                Kepada Yth;<br>Bapak/Ibu/Saudara/i
+            </p>
+            <p class="text-base sm:text-lg font-bold text-maroon mt-1 font-serif-luxury tracking-wide">
+                {{ $namaTamu ?? 'Tamu Undangan' }}
+            </p>
+        </div>
+
+        <!-- OPEN INVITATION BUTTON -->
+        <div class="w-full fade-in-up delay-600">
+            <button 
+                id="btnOpenInvitation" 
+                class="btn-shimmer group w-full relative overflow-hidden bg-gradient-to-r from-maroon via-maroon-light to-maroon text-white py-3.5 px-6 rounded-full shadow-[0_8px_20px_rgba(122,32,33,0.3)] border border-gold/40 hover:brightness-110 active:scale-95 transition-all duration-300 font-semibold text-xs tracking-wider uppercase font-sans cursor-pointer flex items-center justify-center gap-2 relative z-10"
+            >
+                <svg class="w-4 h-4 text-gold-light group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span>Open Invitation</span>
+            </button>
+        </div>
+
     </div>
 
 </section>

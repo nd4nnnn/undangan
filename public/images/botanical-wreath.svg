@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Circular Laurel & Botanical Wreath Crest in Gold & Sage -->
+  <!-- Outer hairline decorative ring -->
+  <circle cx="100" cy="100" r="92" stroke="#C5A059" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.6"/>
+  <!-- Inner ring -->
+  <circle cx="100" cy="100" r="82" stroke="#C5A059" stroke-width="1.2" opacity="0.8"/>
+  <circle cx="100" cy="100" r="76" stroke="#C5A059" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Left Laurel Branch -->
+  <path d="M100 182 C 55 180, 20 145, 20 100 C 20 55, 55 20, 100 18" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Left Leaves -->
+  <!-- Bottom to Top -->
+  <path d="M85 180 C 75 182, 70 174, 76 170 C 82 170, 85 174, 85 180 Z" fill="#657766" opacity="0.75"/>
+  <path d="M68 168 C 58 171, 52 163, 60 158 C 66 158, 68 162, 68 168 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M50 152 C 40 155, 36 146, 44 140 C 50 141, 51 146, 50 152 Z" fill="#657766" opacity="0.75"/>
+  <path d="M35 132 C 25 133, 23 123, 31 119 C 37 121, 37 126, 35 132 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M25 110 C 16 109, 15 99, 24 97 C 29 100, 28 105, 25 110 Z" fill="#657766" opacity="0.75"/>
+  <path d="M26 88 C 18 83, 21 73, 29 74 C 32 78, 30 84, 26 88 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M36 67 C 30 60, 36 51, 43 54 C 44 59, 41 64, 36 67 Z" fill="#657766" opacity="0.75"/>
+  <path d="M52 48 C 48 40, 56 33, 63 38 C 62 43, 58 46, 52 48 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M72 32 C 70 23, 80 19, 85 25 C 83 29, 78 31, 72 32 Z" fill="#657766" opacity="0.75"/>
+
+  <!-- Right Laurel Branch -->
+  <path d="M100 182 C 145 180, 180 145, 180 100 C 180 55, 145 20, 100 18" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Right Leaves -->
+  <!-- Bottom to Top -->
+  <path d="M115 180 C 125 182, 130 174, 124 170 C 118 170, 115 174, 115 180 Z" fill="#657766" opacity="0.75"/>
+  <path d="M132 168 C 142 171, 148 163, 140 158 C 134 158, 132 162, 132 168 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M150 152 C 160 155, 164 146, 156 140 C 150 141, 149 146, 150 152 Z" fill="#657766" opacity="0.75"/>
+  <path d="M165 132 C 175 133, 177 123, 169 119 C 163 121, 163 126, 165 132 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M175 110 C 184 109, 185 99, 176 97 C 171 100, 172 105, 175 110 Z" fill="#657766" opacity="0.75"/>
+  <path d="M174 88 C 182 83, 179 73, 171 74 C 168 78, 170 84, 174 88 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M164 67 C 170 60, 164 51, 157 54 C 156 59, 159 64, 164 67 Z" fill="#657766" opacity="0.75"/>
+  <path d="M148 48 C 152 40, 144 33, 137 38 C 138 43, 142 46, 148 48 Z" fill="#C5A059" opacity="0.65"/>
+  <path d="M128 32 C 130 23, 120 19, 115 25 C 117 29, 122 31, 128 32 Z" fill="#657766" opacity="0.75"/>
+
+  <!-- Top Ribbon / Star Accent -->
+  <polygon points="100,10 102,15 100,20 98,15" fill="#C5A059"/>
+  <!-- Bottom Ribbon / Knot Accent -->
+  <circle cx="100" cy="182" r="3" fill="#C5A059"/>
+  <path d="M94 186 C 96 193, 100 196, 100 196 C 100 196, 104 193, 106 186" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
