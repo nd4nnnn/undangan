@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <!-- LAYER 1: COVER DEPAN (OPENING CURTAIN / ENVELOPE) -->
-    <div id="coverWrapper" class="fixed inset-0 z-[100] max-w-md mx-auto bg-gradient-to-b from-[#FAF7F2] via-[#F5ECE0] to-[#EFE4D4] flex flex-col items-center justify-center text-center p-4 transition-all duration-700 ease-in-out shadow-2xl overflow-y-auto no-scrollbar">
+    <!-- LAYER 1: COVER DEPAN (OPENING ENVELOPE) -->
+    <div id="coverWrapper" class="fixed inset-0 z-[100] max-w-md mx-auto bg-gradient-to-b from-[#FAF7F2] via-[#F5ECE0] to-[#EFE4D4] flex flex-col items-center justify-center text-center p-3 sm:p-4 shadow-2xl overflow-y-auto no-scrollbar will-change-transform">
         <div class="absolute inset-0 bg-[radial-gradient(#C5A059_0.75px,transparent_0.75px)] [background-size:20px_20px] opacity-25 pointer-events-none"></div>
         @include('sections.opening')
     </div>
@@ -93,20 +93,52 @@
             document.body.style.overflow = 'hidden';
         }
 
-        if (btnOpen) {
-            btnOpen.addEventListener('click', function() {
-                document.body.style.overflow = '';
-                coverWrapper.style.transition = 'opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
-                coverWrapper.style.opacity = '0';
-                coverWrapper.style.transform = 'translateY(-100%) scale(0.96)';
-                coverWrapper.style.pointerEvents = 'none';
+        let isOpeningInvitation = false;
 
-                setTimeout(() => {
-                    coverWrapper.style.display = 'none';
-                }, 700);
+        function triggerOpenInvitation() {
+            if (isOpeningInvitation) return;
+            isOpeningInvitation = true;
+
+            const envelopeBox = document.getElementById('envelopeBox');
+            const openingHeader = document.getElementById('openingHeader');
+            const btnOpen = document.getElementById('btnOpenInvitation');
+
+            // 1. Open Envelope: 3D Flap flips up smoothly, letter gracefully ascends, plaque dissolves
+            if (envelopeBox) {
+                envelopeBox.classList.add('is-open');
+            }
+            if (openingHeader) {
+                openingHeader.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)';
+                openingHeader.style.opacity = '0';
+                openingHeader.style.transform = 'translate3d(0, -10px, 0)';
+            }
+            if (btnOpen) {
+                btnOpen.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)';
+                btnOpen.style.opacity = '0';
+                btnOpen.style.transform = 'translate3d(0, 8px, 0) scale(0.95)';
+                btnOpen.style.pointerEvents = 'none';
+            }
+
+            // 2. Play Audio immediately on user interaction
+            if (audio) {
+                audio.play().then(() => {
+                    updateMusicUI(true);
+                }).catch(e => {
+                    console.log('Audio autoplay prevented:', e);
+                    updateMusicUI(false);
+                });
+            }
+
+            // 3. After letter card has smoothly risen and presented (1050ms), transition seamlessly to main content
+            setTimeout(() => {
+                document.body.style.overflow = '';
+                if (coverWrapper) {
+                    coverWrapper.classList.add('cover-closing');
+                }
 
                 if (mainContent) {
                     mainContent.classList.remove('hidden');
+                    mainContent.classList.add('main-content-appear');
                     const firstSec = document.getElementById('mempelai');
                     if (firstSec) {
                         void firstSec.offsetWidth;
@@ -119,19 +151,38 @@
                 }
                 if (musicBtn) {
                     musicBtn.classList.remove('hidden');
-                    musicBtn.style.animation = 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                    musicBtn.style.animation = 'fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards';
                 }
 
-                if (audio) {
-                    audio.play().then(() => {
-                        updateMusicUI(true);
-                    }).catch(e => {
-                        console.log('Audio autoplay prevented:', e);
-                        updateMusicUI(false);
-                    });
-                }
+                window.scrollTo(0, 0);
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => {
+                    if (coverWrapper) coverWrapper.style.display = 'none';
+                }, 650);
+            }, 1050);
+        }
+
+        if (btnOpen) {
+            btnOpen.addEventListener('click', function(e) {
+                e.stopPropagation();
+                triggerOpenInvitation();
+            });
+        }
+
+        const waxSeal = document.getElementById('waxSealBtn');
+        if (waxSeal) {
+            waxSeal.addEventListener('click', function(e) {
+                e.stopPropagation();
+                triggerOpenInvitation();
+            });
+        }
+
+        const envelopeBox = document.getElementById('envelopeBox');
+        if (envelopeBox) {
+            envelopeBox.addEventListener('click', function(e) {
+                if (!isOpeningInvitation) {
+                    triggerOpenInvitation();
+                }
             });
         }
 

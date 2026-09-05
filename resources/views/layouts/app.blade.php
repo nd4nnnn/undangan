@@ -324,6 +324,254 @@
         .glass-music-btn:active {
             transform: scale(0.94);
         }
+
+        /* ===================================================
+           LUXURY 3D ENVELOPE OPENING ANIMATION STYLES
+            =================================================== */
+        .envelope-scene {
+            perspective: 1200px;
+            -webkit-perspective: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 330px;
+            max-width: calc(100vw - 32px);
+            height: 222px;
+            cursor: pointer;
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            user-select: none;
+            will-change: transform;
+        }
+        @media (min-width: 380px) {
+            .envelope-wrapper {
+                width: 345px;
+                max-width: 345px;
+                height: 226px;
+            }
+        }
+        .envelope-wrapper:hover {
+            transform: translate3d(0, -3px, 0);
+        }
+
+        /* Envelope Back Base */
+        .envelope-back {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(150deg, #FBF8F2 0%, #F1E7D7 100%);
+            border-radius: 20px;
+            border: 1.5px solid rgba(197, 160, 89, 0.45);
+            box-shadow: 
+                0 16px 36px -10px rgba(122, 32, 33, 0.14),
+                0 4px 12px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            z-index: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        /* Subtle Inner Lining Pattern */
+        .envelope-back-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(#C5A059 0.85px, transparent 0.85px);
+            background-size: 16px 16px;
+            opacity: 0.22;
+        }
+
+        /* The Letter / Card Inside */
+        .envelope-card {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            top: 10px;
+            height: 204px;
+            background: #FFFFFF;
+            border-radius: 14px;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            z-index: 2;
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 12px;
+            text-align: center;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+        @media (min-width: 400px) {
+            .envelope-card {
+                left: 14px;
+                right: 14px;
+                top: 10px;
+                height: 212px;
+            }
+        }
+
+        /* When Opened: Letter Slides UP with smooth elevation after flap clears */
+        .envelope-wrapper.is-open .envelope-card {
+            transform: translate3d(0, -125px, 0) scale(1.02);
+            box-shadow: 0 20px 40px -8px rgba(122, 32, 33, 0.22), 0 6px 14px rgba(0, 0, 0, 0.06);
+            z-index: 5;
+            transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.16s, box-shadow 0.6s ease 0.16s;
+        }
+
+        /* Envelope Front Pocket (Lower origami folds) */
+        .envelope-pocket {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+            border-radius: 20px;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+
+        /* Top Flap (Triangular flap that flips open) */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 110px;
+            transform-origin: top center;
+            transform-style: preserve-3d;
+            transform: translate3d(0, 0, 0) rotateX(0deg);
+            transition: transform 0.62s cubic-bezier(0.33, 1, 0.68, 1);
+            z-index: 6;
+            pointer-events: none;
+            will-change: transform;
+            backface-visibility: visible;
+        }
+
+        /* When Opened: Flap rotates 180deg */
+        .envelope-wrapper.is-open .envelope-flap {
+            transform: translate3d(0, 0, 0) rotateX(180deg);
+            z-index: 1;
+            transition: transform 0.62s cubic-bezier(0.33, 1, 0.68, 1), z-index 0.01s 0.22s;
+        }
+
+        /* Wax Seal Button / Stamp */
+        .wax-seal {
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translate3d(-50%, 0, 0);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #96282A, #5A1314 80%);
+            border: 2px solid #E6C875;
+            box-shadow: 
+                0 6px 16px rgba(90, 19, 20, 0.45),
+                0 2px 6px rgba(0, 0, 0, 0.25),
+                inset 0 1px 3px rgba(255, 255, 255, 0.4),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FCE8C3;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            z-index: 10;
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+            pointer-events: auto;
+            cursor: pointer;
+            will-change: transform, opacity;
+        }
+        .wax-seal::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1.5px dashed rgba(223, 191, 123, 0.6);
+            animation: ringPulse 2.4s infinite;
+        }
+        .envelope-wrapper:hover .wax-seal {
+            transform: translate3d(-50%, 0, 0) scale(1.08);
+            box-shadow: 0 8px 20px rgba(90, 19, 20, 0.55);
+        }
+        .envelope-wrapper.is-open .wax-seal {
+            opacity: 0;
+            transform: translate3d(-50%, -8px, 0) scale(0.65);
+            pointer-events: none;
+            transition: opacity 0.22s ease, transform 0.25s ease;
+        }
+
+        /* Front Guest Plaque on Envelope */
+        .envelope-guest-card {
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 14px;
+            padding: 10px 12px 8px 12px;
+            box-shadow: 0 4px 14px rgba(122, 32, 33, 0.08);
+            z-index: 4;
+            pointer-events: auto;
+            text-align: center;
+            transform: translate3d(0, 0, 0);
+            transition: opacity 0.32s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        @media (min-width: 400px) {
+            .envelope-guest-card {
+                left: 18px;
+                right: 18px;
+                bottom: 12px;
+                padding: 12px 14px 10px 14px;
+            }
+        }
+        .envelope-guest-card::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border: 0.75px solid rgba(197, 160, 89, 0.25);
+            border-radius: 11px;
+            pointer-events: none;
+        }
+        .envelope-wrapper:hover .envelope-guest-card {
+            box-shadow: 0 6px 18px rgba(122, 32, 33, 0.12);
+        }
+        .envelope-wrapper.is-open .envelope-guest-card {
+            opacity: 0;
+            transform: translate3d(0, 16px, 0) scale(0.96);
+            pointer-events: none;
+            transition: opacity 0.28s ease 0.06s, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
+        }
+
+        /* Seamless Cover Dissolve & Content Arrival */
+        .cover-closing {
+            opacity: 0 !important;
+            transform: translate3d(0, -16px, 0) scale(1.03) !important;
+            pointer-events: none !important;
+            transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+        .main-content-appear {
+            animation: mainContentFade 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes mainContentFade {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 12px, 0) scale(0.985);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex items-center justify-center p-0 sm:py-6">
@@ -348,7 +596,7 @@
                 onclick="toggleMusic()" 
                 aria-label="Toggle Music"
                 title="Putar / Jeda Musik"
-                class="hidden pointer-events-auto w-10 h-10 rounded-full glass-music-btn flex items-center justify-center text-maroon cursor-pointer"
+                class="hidden pointer-events-auto w-10 h-10 rounded-full glass-music-btn flex items-center justify-center text-maroon cursor-pointer shadow-md active:scale-95 transition-transform"
             >
                 <div id="diskRotate" class="w-5 h-5 flex items-center justify-center spin-slow transition-opacity duration-300">
                     <svg class="w-4 h-4 text-maroon" fill="currentColor" viewBox="0 0 20 20">
