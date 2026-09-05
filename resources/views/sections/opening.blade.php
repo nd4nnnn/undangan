@@ -3,16 +3,16 @@
     <!-- WEDDING HEADER (ABOVE ENVELOPE) -->
     <div id="openingHeader" class="mb-3.5 flex flex-col items-center fade-in-up delay-100">
         <div class="flex items-center gap-2 mb-1">
-            <span class="w-7 h-[1px] bg-gold/50"></span>
-            <span class="text-[10px] tracking-[0.3em] text-gold-dark font-bold uppercase font-sans">
+            <span class="w-7 h-[1px] bg-gold/70"></span>
+            <span class="text-[10px] tracking-[0.32em] text-maroon font-bold uppercase font-sans drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
                 WEDDING INVITATION
             </span>
-            <span class="w-7 h-[1px] bg-gold/50"></span>
+            <span class="w-7 h-[1px] bg-gold/70"></span>
         </div>
-        <h1 class="text-3xl sm:text-4xl text-maroon font-script-wedding tracking-wide leading-none">
+        <h1 class="text-3xl sm:text-4xl text-maroon font-script-wedding tracking-wide leading-none drop-shadow-[0_2px_6px_rgba(255,255,255,0.9)]">
             Herni & Panji
         </h1>
-        <p class="text-[11px] tracking-[0.2em] text-stone-600 font-semibold uppercase mt-1">
+        <p class="text-[10.5px] tracking-[0.22em] text-stone-700 font-bold uppercase mt-1 drop-shadow-[0_1px_3px_rgba(255,255,255,0.9)]">
             Sabtu, 10 Oktober 2026
         </p>
     </div>
@@ -143,7 +143,7 @@
             <span>Buka Undangan</span>
         </button>
 
-        <p class="text-[10px] text-stone-500 font-sans tracking-wide">
+        <p class="text-[10px] text-stone-700 font-sans tracking-wide bg-[#FAF7F2]/85 backdrop-blur-xs px-3 py-0.5 rounded-full border border-gold/30 shadow-xs">
             Ketuk amplop atau tombol di atas untuk membuka
         </p>
     </div>

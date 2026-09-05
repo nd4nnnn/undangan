@@ -574,10 +574,10 @@
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex items-center justify-center p-0 sm:py-6">
+<body class="antialiased min-h-screen flex justify-center p-0 m-0">
     
     <!-- DESKTOP CONTAINER: MOBILE INVITATION FRAME -->
-    <div class="w-full max-w-md mx-auto min-h-screen sm:min-h-[92vh] sm:rounded-[36px] bg-gradient-to-b from-[#FDFBF7] via-[#FAF6F0] to-[#F5EFE4] relative overflow-hidden shadow-[0_20px_50px_rgba(80,20,25,0.15)] border-0 sm:border sm:border-[#C5A059]/40 flex flex-col justify-between">
+    <div class="w-full max-w-md mx-auto min-h-screen bg-gradient-to-b from-[#FDFBF7] via-[#FAF6F0] to-[#F5EFE4] relative shadow-[0_0_50px_rgba(0,0,0,0.12)] flex flex-col justify-between">
 
         <!-- SUBTLE FLOATING PARTICLES (LUXURY GOLD DUST) -->
         <div class="falling-particles pointer-events-none">
@@ -589,15 +589,16 @@
             <div class="particle"></div>
         </div>
 
-        <!-- FLOATING MUSIC BUTTON (BOTTOM RIGHT CORNER - SIMPLE CLEAN GLASS) -->
+        <!-- FLOATING MUSIC BUTTON (BOTTOM RIGHT CORNER - CLEAN ROTATING DISC) -->
         <div class="fixed bottom-20 left-0 right-0 w-full max-w-md mx-auto pointer-events-none z-50 flex justify-end px-4">
             <button 
                 id="musicBtn" 
                 onclick="toggleMusic()" 
-                aria-label="Toggle Music"
+                aria-label="Putar / Jeda Musik"
                 title="Putar / Jeda Musik"
-                class="hidden pointer-events-auto w-10 h-10 rounded-full glass-music-btn flex items-center justify-center text-maroon cursor-pointer shadow-md active:scale-95 transition-transform"
+                class="hidden pointer-events-auto w-10 h-10 rounded-full glass-music-btn flex items-center justify-center text-maroon cursor-pointer shadow-md active:scale-95 transition-all duration-300 border border-gold/40"
             >
+                <!-- IKON NOT MUSIK (BERPUTAR SAAT BERJALAN) -->
                 <div id="diskRotate" class="w-5 h-5 flex items-center justify-center spin-slow transition-opacity duration-300">
                     <svg class="w-4 h-4 text-maroon" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
@@ -834,6 +835,56 @@
 
         </div>
     </div>
+    
+    <!-- MODAL POP-UP KONFIRMASI TRANSFER / GIFT (ROOT LEVEL - FULL VIEWPORT OVERLAY) -->
+    <div id="modalGift" class="fixed inset-0 bg-black/75 backdrop-blur-md z-[999] hidden flex items-center justify-center p-4 transition-all duration-300" onclick="toggleModalGift(false)">
+        <div class="stationery-card rounded-3xl max-w-xs w-full p-6 text-center shadow-2xl relative gold-border-inner modal-content-animate" onclick="event.stopPropagation()">
+            
+            <!-- Tombol Close (X) -->
+            <button onclick="toggleModalGift(false)" aria-label="Tutup" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-500 hover:text-maroon text-base font-bold flex items-center justify-center cursor-pointer transition">
+                ✕
+            </button>
+
+            <div class="w-11 h-11 mx-auto mb-2 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.173 8.173 0 012.42 5.82c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24z"/>
+                </svg>
+            </div>
+
+            <h3 class="text-base font-bold text-maroon mb-1 font-serif-luxury tracking-wide">Konfirmasi Transfer</h3>
+            <p class="text-xs text-stone-600 mb-4 font-sans leading-relaxed">Pilih tujuan WhatsApp untuk mengirimkan bukti transfer:</p>
+
+            <!-- Pilihan WhatsApp Herni -->
+            <a href="https://wa.me/6283849149351?text=Halo%20Herni,%20saya%20ingin%20konfirmasi%20bukti%20transfer%20hadiah%20pernikahan." 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center justify-center gap-2 bg-emerald-600 text-white w-full py-2.5 rounded-xl text-xs font-semibold mb-2.5 hover:bg-emerald-700 active:scale-95 transition shadow-xs font-sans">
+                <span>WA Mempelai Wanita (Herni)</span>
+            </a>
+
+            <!-- Pilihan WhatsApp Panji -->
+            <a href="https://wa.me/628xxxxxxxxxx?text=Halo%20Panji,%20saya%20ingin%20konfirmasi%20bukti%20transfer%20hadiah%20pernikahan." 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="flex items-center justify-center gap-2 bg-emerald-600 text-white w-full py-2.5 rounded-xl text-xs font-semibold hover:bg-emerald-700 active:scale-95 transition shadow-xs font-sans">
+                <span>WA Mempelai Pria (Panji)</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleModalGift(show) {
+            const modal = document.getElementById('modalGift');
+            if (!modal) return;
+            if (show) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
     
     @stack('scripts')
     

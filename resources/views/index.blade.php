@@ -4,38 +4,43 @@
 
     <!-- LAYER 1: COVER DEPAN (OPENING ENVELOPE) -->
     <div id="coverWrapper" class="fixed inset-0 z-[100] max-w-md mx-auto bg-gradient-to-b from-[#FAF7F2] via-[#F5ECE0] to-[#EFE4D4] flex flex-col items-center justify-center text-center p-3 sm:p-4 shadow-2xl overflow-y-auto no-scrollbar will-change-transform">
-        <div class="absolute inset-0 bg-[radial-gradient(#C5A059_0.75px,transparent_0.75px)] [background-size:20px_20px] opacity-25 pointer-events-none"></div>
+        <!-- BACKGROUND GERBANG ISTANA (SOFT & ELEGANT) -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden select-none">
+            <img src="/images/bg-gerbang-istana.jpg" alt="Background Gerbang Istana" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/40 via-transparent to-[#FAF7F2]/50 pointer-events-none"></div>
+        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(#C5A059_0.75px,transparent_0.75px)] [background-size:20px_20px] opacity-15 pointer-events-none"></div>
         @include('sections.opening')
     </div>
 
     <!-- LAYER 2: ISI UNDANGAN UTAMA -->
-    <div id="mainContent" class="hidden w-full flex-1 flex flex-col">
+    <div id="mainContent" class="hidden w-full flex-1 flex flex-col justify-center">
         
-        <section id="mempelai" class="page-section w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
+        <section id="mempelai" class="page-section w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @include('sections.mempelai')
         </section>
 
-        <section id="akad" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
+        <section id="akad" class="page-section hidden w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @include('sections.akad-resepsi')
         </section>
 
-        <section id="love-story" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
+        <section id="love-story" class="page-section hidden w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @include('sections.love-story')
         </section>
 
-        <section id="gallery" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
+        <section id="gallery" class="page-section hidden w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @includeIf('sections.gallery')
         </section>
 
-        <section id="rsvp" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
+        <section id="rsvp" class="page-section hidden w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @includeIf('sections.rsvp')
         </section>
 
-        <section id="gift" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
+        <section id="gift" class="page-section hidden w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
             @includeIf('sections.gift')
         </section>
 
-        <section id="quotes" class="page-section hidden w-full flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300">
+        <section id="quotes" class="page-section hidden w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300 min-h-[calc(100vh-6rem)] my-auto">
             @include('sections.quotes')
         </section>
 
@@ -58,6 +63,9 @@
         if (diskRotate) {
             diskRotate.style.animationPlayState = playing ? 'running' : 'paused';
             diskRotate.style.opacity = playing ? '1' : '0.55';
+        }
+        if (musicBtn) {
+            musicBtn.classList.toggle('opacity-70', !playing);
         }
     }
 

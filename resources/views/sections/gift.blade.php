@@ -97,54 +97,8 @@
     </button>
 </div>
 
-<!-- ========================================== -->
-<!-- MODAL POP-UP PILIHAN WHATSAPP              -->
-<!-- ========================================== -->
-<div id="modalGift" class="fixed inset-0 bg-black/70 backdrop-blur-md z-[100] flex items-center justify-center p-4 hidden" onclick="toggleModalGift(false)">
-    <div class="stationery-card rounded-3xl max-w-xs w-full p-6 text-center shadow-2xl relative gold-border-inner" onclick="event.stopPropagation()">
-        
-        <!-- Tombol Close (X) -->
-        <button onclick="toggleModalGift(false)" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-500 hover:text-maroon text-base font-bold flex items-center justify-center cursor-pointer transition">
-            ✕
-        </button>
-
-        <div class="w-11 h-11 mx-auto mb-2 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.173 8.173 0 012.42 5.82c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24z"/>
-            </svg>
-        </div>
-
-        <h3 class="text-base font-bold text-maroon mb-1 font-serif-luxury tracking-wide">Konfirmasi Transfer</h3>
-        <p class="text-xs text-stone-600 mb-4 font-sans leading-relaxed">Pilih tujuan WhatsApp untuk mengirimkan bukti transfer:</p>
-
-        <!-- Pilihan WhatsApp Herni -->
-        <a href="https://wa.me/6283849149351?text=Halo%20Herni,%20saya%20ingin%20konfirmasi%20bukti%20transfer%20hadiah%20pernikahan." 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="flex items-center justify-center gap-2 bg-emerald-600 text-white w-full py-2.5 rounded-xl text-xs font-semibold mb-2.5 hover:bg-emerald-700 active:scale-95 transition shadow-xs font-sans">
-            <span>WA Mempelai Wanita (Herni)</span>
-        </a>
-
-        <!-- Pilihan WhatsApp Panji -->
-        <a href="https://wa.me/628xxxxxxxxxx?text=Halo%20Panji,%20saya%20ingin%20konfirmasi%20bukti%20transfer%20hadiah%20pernikahan." 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="flex items-center justify-center gap-2 bg-emerald-600 text-white w-full py-2.5 rounded-xl text-xs font-semibold hover:bg-emerald-700 active:scale-95 transition shadow-xs font-sans">
-            <span>WA Mempelai Pria (Panji)</span>
-        </a>
-    </div>
-</div>
-
-<!-- Script Toggle Pop-Up & Copy Rekening -->
+<!-- Script Copy Rekening -->
 <script>
-    function toggleModalGift(show) {
-        const modal = document.getElementById('modalGift');
-        if (show) {
-            modal.classList.remove('hidden');
-        } else {
-            modal.classList.add('hidden');
-        }
-    }
 
     function copyRekening(elementId, btn) {
         const el = document.getElementById(elementId);
