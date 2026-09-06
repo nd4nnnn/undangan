@@ -617,7 +617,7 @@
         
         <!-- AUDIO ELEMENT -->
         <audio id="weddingMusic" loop preload="auto">
-            <source src="{{ asset('audio/song.mp3') }}" type="audio/mpeg">
+            <source src="{{ asset('audio/music.mp3') }}" type="audio/mpeg">
         </audio>
 
     </div>
