@@ -18,10 +18,10 @@
             
             <div class="stationery-card rounded-2xl p-3.5 gold-border-inner shadow-xs">
                 <h3 class="font-bold text-maroon text-sm mb-1 font-serif-luxury tracking-wide">
-                    Awal Bertemu (Juni 2026)
+                    ❤️ Awal Bertemu
                 </h3>
                 <p class="text-xs text-stone-700 leading-relaxed font-sans">
-                    Takdir mempertemukan kami pada bulan …… tahun 2026 melalaui perkenalan dengan perantara teman…………………………………
+                    Takdir mempertemukan kami melalui sebuah perkenalan sederhana dari seorang teman. Dari pertemuan yang awalnya biasa saja, perlahan tumbuh rasa penasaran dan keinginan untuk saling mengenal lebih dekat. Siapa sangka, perkenalan sederhana itu menjadi awal dari sebuah cerita yang begitu berarti.
                 </p>
             </div>
         </div>
@@ -32,13 +32,10 @@
             
             <div class="stationery-card rounded-2xl p-3.5 gold-border-inner shadow-xs">
                 <h3 class="font-bold text-maroon text-sm mb-1 font-serif-luxury tracking-wide">
-                    •	Komitmen dan Restu Orang Tua (Juli 2026)
+                    💕 Saling Mengenal
                 </h3>
-                <p class="text-xs text-stone-700 leading-relaxed mb-2 font-sans">
-                    Di bulan Juli 2026 untuk pertama kali nya kami duduk bersama berbagi cerita dan meyakinkan hati……
-                </p>
                 <p class="text-xs text-stone-700 leading-relaxed font-sans">
-                    Dengan hati yang dirasa telah mantap, Pada akhir bulan juli kami melangkah meminta restu orang tua. Doa mereka menjadi cahaya yang menuntun langkah kami menuju ikatan Suci.
+                    Seiring perjalanan, kami mulai berbagi banyak cerita, tawa, impian, dan berbagai hal tentang kehidupan. Dalam setiap percakapan, kami menemukan banyak kesamaan, sekaligus belajar memahami perbedaan. Dari situlah, kedekatan perlahan tumbuh dan menghadirkan kenyamanan yang sulit untuk dijelaskan.
                 </p>
             </div>
         </div>
@@ -49,10 +46,10 @@
             
             <div class="stationery-card rounded-2xl p-3.5 gold-border-inner shadow-xs">
                 <h3 class="font-bold text-maroon text-sm mb-1 font-serif-luxury tracking-wide">
-                    Lamaran
+                    ❤️  Semakin Dekat
                 </h3>
                 <p class="text-xs text-stone-700 leading-relaxed font-sans">
-                    Pada tanggal 8 Agustus 2026 menjadi saksi. Keluarga kami datang membawa niat baik untuk meminang. Hari itu pula kami mengikat janji pada bulan Oktober 2026.
+                    Kebersamaan membuat kami semakin memahami satu sama lain. Rasa nyaman yang tumbuh perlahan berubah menjadi kasih yang tulus. Kami belajar untuk saling mendukung, menguatkan, dan hadir dalam setiap keadaan, baik dalam suka maupun duka.
                 </p>
             </div>
         </div>
@@ -63,13 +60,24 @@
             
             <div class="stationery-card rounded-2xl p-3.5 gold-border-inner shadow-xs">
                 <h3 class="font-bold text-maroon text-sm mb-1 font-serif-luxury tracking-wide">
-                    Pernikahan (2026)
+                    💕 Melangkah Bersama
                 </h3>
-                <p class="text-xs text-stone-700 leading-relaxed mb-2 font-sans">
-                    Waktu terasa begitu singkat manuju yang kami nantikan. Namun doa dan cinta dari kalianlah yang menguatakan kami.
-                </p>
                 <p class="text-xs text-stone-700 leading-relaxed font-sans">
-                    Dengan penuh harap, Kami memohon doa restu dari keluarga, sanak saudara, sahabat, dan teman terkasih. Semoga langkah kami diberkahi dan dimudahkan serta dipenuhi kebahagiaan.
+                    Setelah melalui berbagai cerita dan perjalanan, kami menyadari bahwa apa yang kami miliki bukan sekadar sebuah kebetulan. Dengan keyakinan, doa, serta restu dari keluarga dan orang-orang terdekat, kami memutuskan untuk melangkah bersama dan membawa hubungan ini menuju sebuah ikatan yang lebih serius.
+                </p>
+            </div>
+        </div>
+
+        <!-- TIMELINE ITEM 5 -->
+        <div class="relative pl-5">
+            <div class="absolute w-4 h-4 bg-maroon rounded-full -left-[9px] top-1 shadow-xs border border-white timeline-dot"></div>
+            
+            <div class="stationery-card rounded-2xl p-3.5 gold-border-inner shadow-xs">
+                <h3 class="font-bold text-maroon text-sm mb-1 font-serif-luxury tracking-wide">
+                    ❤️  Selamanya
+                </h3>
+                <p class="text-xs text-stone-700 leading-relaxed font-sans">
+                    Kini, kami siap menapaki perjalanan baru bersama. Bukan lagi sebagai dua insan yang hanya dipertemukan oleh sebuah perkenalan, tetapi sebagai dua hati yang memilih untuk saling menjaga dan melengkapi. Dengan cinta, kesetiaan, doa, dan harapan, kami ingin terus menulis cerita ini bersama, hingga setiap langkah membawa kami pada kebahagiaan yang kami perjuangkan berdua.
                 </p>
             </div>
         </div>

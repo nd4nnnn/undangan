@@ -44,6 +44,10 @@
             @include('sections.quotes')
         </section>
 
+        <section id="terimakasih" class="page-section hidden w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 py-2 transition-all duration-300 min-h-[calc(100vh-6rem)] my-auto">
+            @include('sections.terimakasih')
+        </section>
+
     </div>
 
 @endsection
@@ -194,6 +198,7 @@
             });
         }
 
+        // NAVIGASI DENGAN AUTO SCROLL KE TENGAH
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault(); 
@@ -201,6 +206,13 @@
 
                 navLinks.forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
+
+                // AUTO-SCROLL ITEM NAV KE TENGAH CONTAINER NAVBAR
+                this.scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'center',
+                    block: 'nearest'
+                });
 
                 sections.forEach(sec => {
                     sec.classList.add('hidden');
